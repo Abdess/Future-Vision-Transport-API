@@ -2,7 +2,9 @@ Flask
 gunicorn
 matplotlib
 numpy
-opencv-python
+# Fix : ImportError: libGL.so
+# opencv-python
+opencv-python-headless
 python-dotenv
 six
 # Fix : Heroku : Slug size too large
