@@ -7,6 +7,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" aria-label="Future Vision Transport Logo" href="{{ url_for('static', filename='favicon.ico') }}">
   <title>Future Vision Transport</title>
+  <meta name="description"
+    content="API Flask qui prend une image en entrée pour fournir une segmentation d’image en sortie." />
+  <meta property="og:title" content="Future Vision Transport" />
+  <meta property="og:url" content="{{ url_for(request.endpoint, **request.view_args) }}" />
+  <meta property="og:description"
+    content="API Flask qui prend une image en entrée pour fournir une segmentation d’image en sortie." />
+  <meta property="og:image" content="{{ url_for('static', filename='banner.png') }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
 </head>
 
 <body class='bg-white dark:bg-gray-900'>

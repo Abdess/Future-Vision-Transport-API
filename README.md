@@ -1,6 +1,6 @@
 # Future Vision Transport : Flask API
 
-![Logo](screenshots/logo.png)
+![Logo](app/static/banner.png)
 
 API Flask qui prend une image en entrée pour fournir une segmentation d’image en sortie.
 
