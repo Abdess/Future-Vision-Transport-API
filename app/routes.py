@@ -57,3 +57,7 @@ def seg_infer():
                cmap='nipy_spectral_r')
 
     return render_template('api.html', image_data=image)
+
+@web.route('/sw.js', methods=['GET'])
+def sw():
+    return web.send_static_file('sw.js')
