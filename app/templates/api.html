@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block body %}
+<nav class="flex px-5 py-3 text-gray-700 border border-gray-300 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+  aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-3">
+    <li class="inline-flex items-center">
+      <a href="/"
+        class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+        <svg class="w-4 h-4 mr-2" style="fill: currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+          </path>
+        </svg> Accueil </a>
+    </li>
+    <li>
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-gray-400" style="fill: currentColor" viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">API</span>
+      </div>
+    </li>
+  </ol>
+</nav>
+<main>
+  <div class="flex items-center justify-center pt-6 pb-6">
+    <h1 class="font-sans text-2xl font-medium text-gray-900 dark:text-white">Résultat de la segmentation</h1>
+  </div>
+  <div class="container mx-auto">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-1 lg:grid-cols-3">
+      <div
+        class="flex justify-center bg-white rounded-lg border border-gray-300 shadow-md hover:shadow-xl sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div>
+          <h2 class="text-base text-center font-medium text-gray-900 dark:text-white pb-6">{{image_data}}</h2>
+          <img class="rounded-lg border border-gray-300 shadow-md" alt="Original"
+            src='{{ url_for("static", filename="datasets/images/"+image_data) }}' height="256" width="512" />
+        </div>
+      </div>
+      <div
+        class="flex justify-center bg-white rounded-lg border border-gray-300 shadow-md hover:shadow-xl sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div>
+          <h2 class="text-base text-center font-medium text-gray-900 dark:text-white pb-6">Vérité de terrain</h2>
+          <img class="rounded-lg border border-gray-300 shadow-md" alt="Ground Truth"
+            src='{{ url_for("static", filename="outputs/gt.png") }}' height="256" width="512" />
+        </div>
+      </div>
+      <div
+        class="flex justify-center bg-white rounded-lg border border-gray-300 shadow-md hover:shadow-xl sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div>
+          <h2 class="text-base text-center font-medium text-gray-900 dark:text-white pb-6">Prédiction</h2>
+          <img class="rounded-lg border border-gray-300 shadow-md" alt="Prédiction"
+            src='{{ url_for("static", filename="outputs/prediction.png") }}' height="256" width="512" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mx-auto">
+    <div class="flex items-center justify-center pt-6">
+      <div
+        class="flex justify-center bg-white rounded-lg border border-gray-300 px-6 pb-6 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <table class="min-w-full text-center">
+          <thead class="border-b">
+            <tr>
+              <th scope="col" class="text-sm font-medium text-gray-900 dark:text-white px-6 py-4"> Légende </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b bg-[#008fdd] border-blue-200">
+              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap"> Ciel </td>
+            </tr>
+            <tr class="border-b bg-[#f3e400] border-yellow-200">
+              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap"> Construction </td>
+            </tr>
+            <tr class="border-b bg-[#1300a8] border-blue-200">
+              <td class="text-sm text-white font-medium px-6 py-4 whitespace-nowrap"> Humain </td>
+            </tr>
+            <tr class="border-b bg-[#00a03a] border-green-200">
+              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap"> Nature </td>
+            </tr>
+            <tr class="border-b bg-[#00ec00] border-green-200">
+              <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap"> Objet </td>
+            </tr>
+            <tr class="border-b bg-[#fa0000] border-red-200">
+              <td class="text-sm text-black-900 font-medium px-6 py-4 whitespace-nowrap"> Plat </td>
+            </tr>
+            <tr class="border-b bg-[#000000] border-black-200">
+              <td class="text-sm text-white font-medium px-6 py-4 whitespace-nowrap"> Véhicule </td>
+            </tr>
+            <tr class="border-b bg-[#cccccc] border-gray-300">
+              <td class="text-sm text-black-900 font-medium px-6 py-4 whitespace-nowrap"> Néant </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+{%endblock%}

@@ -1,0 +1,8 @@
+Flask
+gunicorn
+matplotlib
+numpy
+opencv-python
+python-dotenv
+six
+tensorflow
