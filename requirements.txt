@@ -5,4 +5,6 @@ numpy
 opencv-python
 python-dotenv
 six
-tensorflow
+# Fix : Heroku : Slug size too large
+# tensorflow
+tensorflow-cpu
